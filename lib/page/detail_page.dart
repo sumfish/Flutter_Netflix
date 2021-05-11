@@ -37,11 +37,13 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin{
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
+            //child: Column(  //要用listview
+            child: ListView(
+              //mainAxisSize: MainAxisSize.min,
+              //crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded( /// !!! 擴充填滿整個可視空間
+                //expand要跟column等等一起用
+                Container( /// !!! 擴充填滿整個可視空間
                     child:BackdropFilter( //blur effects 元件之下（所以要用stack）
                       filter: ImageFilter.blur(sigmaX: 13.0, sigmaY: 13.0),
                       child: Padding(
@@ -62,11 +64,10 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin{
                     Text(
                       "2020", style: TextStyle(color: Colors.green),
                     ),
-                    Text("1季")
+                    Text("1季", style: TextStyle(color: Colors.green),)
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
+                Align(
                   child: Text(
                     "第1季上線",
                     style: TextStyle(fontSize: 16.0, color: Colors.white),
@@ -101,11 +102,14 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin{
                 SizedBox(
                   height: 8.0,
                 ),
-                Text(
-                  "ACE ><><><><><><\nACE ><><><><><><\nACE ><><><><><><\nACE ><><><><><><",
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(color: Colors.grey),
+                Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "ACE ><><><><><><\nACE ><><><><><><\nACE ><><><><><><\nACE ><><><><><><",
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(color: Colors.grey),
+                  ),
                 ),
                 Align(
                     alignment: Alignment.center,
@@ -180,6 +184,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin{
                 IndexedStack(
                   children: [
                     _buildAllEpisodes(),
+                    _buildRelatedSeries()
                   ],
                   index: selectedIndex,
                 )
@@ -188,6 +193,28 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin{
           )
         ],
       ),
+    );
+  }
+
+  Widget _buildRelatedSeries(){
+    return GridView.count(
+      shrinkWrap: true,
+      primary: false,
+      padding: const EdgeInsets.symmetric(vertical: 50),
+      crossAxisSpacing: 10,
+      mainAxisSpacing: 10,
+      crossAxisCount: 3,
+      childAspectRatio: 9 / 12,
+      children: List.generate(9, (index) => _buildEachRelatedSeries()),
+    );
+  }
+
+  _buildEachRelatedSeries() {
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15.0),
+          image: DecorationImage(
+              image: AssetImage("assets/videolist/ACE.jpeg"),fit: BoxFit.cover)),
     );
   }
 
