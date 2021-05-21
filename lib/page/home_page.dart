@@ -20,16 +20,43 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       key: _globalKey,
       backgroundColor: Colors.black,
-      body: SingleChildScrollView(
-        child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              HeaderVideo(),
-              Preview(title:'Previews', key: PageStorageKey('preview'),),
-              _buildRecommendedMenu("Trending"),
-              _buildRecommendedMenu("Recommedation"),
+      body: CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                floating: true,
+                pinned: false,
+                snap: false,
+                backgroundColor: Colors.transparent,
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text("TV Shows"),
+                    Text("Movies"),
+                    Text("My list"),
+                  ],
+                ),
+                textTheme: TextTheme(
+                  headline6: TextStyle(
+                    color: Colors.white, fontSize: 16.0
+                  )
+                ),
+                leading: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset("assets/Netflix_N.png"),
+                ),
+              ),
+              SliverList(
+                  delegate: SliverChildListDelegate([
+                    HeaderVideo(),
+                    Preview(title:'Previews', key: PageStorageKey('preview'),),
+                    _buildRecommendedMenu("Trending"),
+                    _buildRecommendedMenu("Recommedation"),
+                    SizedBox(
+                      height: 30.0,
+                    )
+                  ])
+              ),
             ]),
-      ),
     );
   }
 
