@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_netflix/widgets/header_video.dart';
 import 'package:flutter_netflix/widgets/preview.dart';
+import 'package:flutter_netflix/widgets/app_bar_dialog.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -33,15 +34,16 @@ class _HomePageState extends State<HomePage> {
                     Text("TV Shows"),
                     Text("Movies"),
                     Text("My list"),
+                    AppBarDialog(),
                   ],
                 ),
                 textTheme: TextTheme(
                   headline6: TextStyle(
-                    color: Colors.white, fontSize: 16.0
+                    color: Colors.white, fontSize: 14.0
                   )
                 ),
                 leading: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Image.asset("assets/Netflix_N.png"),
                 ),
               ),
