@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_netflix/widgets/header_video.dart';
 import 'package:flutter_netflix/widgets/preview.dart';
+import 'package:flutter_netflix/widgets/app_bar_dialog.dart';
 
 class HomePage extends StatefulWidget {
   /// 記錄跳轉資訊
