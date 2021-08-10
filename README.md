@@ -1,6 +1,10 @@
 # flutter_netflix
 
+<<<<<<< HEAD
 A new Flutter application for practice.
+=======
+A new Flutter application for test branch. 
+>>>>>>> origin/master
 
 ## Getting Started
 
