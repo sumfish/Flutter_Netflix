@@ -1,6 +1,6 @@
 # flutter_netflix
 
-A new Flutter application.
+A new Flutter application for practice.
 
 ## Getting Started
 
