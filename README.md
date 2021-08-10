@@ -1,6 +1,6 @@
 # flutter_netflix
 
-A new Flutter application for test branch. 
+A new Flutter application for practice.
 
 ## Getting Started
 
